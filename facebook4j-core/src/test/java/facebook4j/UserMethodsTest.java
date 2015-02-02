@@ -94,10 +94,26 @@ public class UserMethodsTest extends MockFacebookTestBase {
             assertThat(me.getBirthday(), is(nullValue()));
             assertThat(me.getEducation().size(), is(0));
             assertThat(me.getHometown(), is(nullValue()));
+<<<<<<< HEAD
             
             assertThat(me.getAgeRange().getMin(), is(17L));
             assertThat(me.getAgeRange().getMax(), is(20L));
             
+=======
+
+            assertThat(me.getAgeRange().getMin(), is(17));
+            assertThat(me.getAgeRange().getMax(), is(20));
+            
+        }
+
+        @Test
+        public void ageRangeMin() throws Exception {
+            facebook.setMockJSON("mock_json/user/age_range_min.json");
+            User me = facebook.getMe(new Reading().fields("age_range"));
+
+            assertThat(me.getAgeRange().getMin(), is(21));
+            assertThat(me.getAgeRange().getMax(), is(nullValue()));
+>>>>>>> upstream/master
         }
     }
 

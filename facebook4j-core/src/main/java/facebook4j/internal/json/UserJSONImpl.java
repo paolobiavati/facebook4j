@@ -222,9 +222,15 @@ import static facebook4j.internal.util.z_F4JInternalParseUtil.*;
                 work = Collections.emptyList();
             }
             if (!json.isNull("age_range")) {
+<<<<<<< HEAD
 					JSONObject ageRangeJSONObject = json.getJSONObject("age_range");
 					ageRange = new AgeRangeJSONImpl(ageRangeJSONObject);
             }
+=======
+               JSONObject ageRangeJSONObject = json.getJSONObject("age_range");
+               ageRange = new AgeRangeJSONImpl(ageRangeJSONObject);
+           }
+>>>>>>> upstream/master
         } catch (JSONException jsone) {
             throw new FacebookException(jsone.getMessage() + ":" + json.toString(), jsone);
         }
@@ -367,9 +373,15 @@ import static facebook4j.internal.util.z_F4JInternalParseUtil.*;
     }
 
     public User.AgeRange getAgeRange() {
+<<<<<<< HEAD
    	 return ageRange;
     }
     
+=======
+       return ageRange;
+   }
+
+>>>>>>> upstream/master
     /*package*/
     static ResponseList<User> createUserList(HttpResponse res, Configuration conf) throws FacebookException {
         try {
@@ -866,6 +878,7 @@ import static facebook4j.internal.util.z_F4JInternalParseUtil.*;
         }
     }
 
+<<<<<<< HEAD
 	private final class AgeRangeJSONImpl implements User.AgeRange, java.io.Serializable {
 
 		private static final long serialVersionUID = -4890967721976343047L;
@@ -917,4 +930,54 @@ import static facebook4j.internal.util.z_F4JInternalParseUtil.*;
 		}
 	}
   
+=======
+    private final class AgeRangeJSONImpl implements User.AgeRange, java.io.Serializable {
+       private static final long serialVersionUID = -4890967721976343047L;
+       
+       private final Integer min;
+       private final Integer max;
+
+       AgeRangeJSONImpl(JSONObject json) throws FacebookException {
+           min = getInt("min", json);
+           max = getInt("max", json);
+       }
+
+       public Integer getMin() {
+           return min;
+       }
+
+       public Integer getMax() {
+           return max;
+       }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof AgeRangeJSONImpl)) return false;
+
+            AgeRangeJSONImpl that = (AgeRangeJSONImpl) o;
+
+            if (max != null ? !max.equals(that.max) : that.max != null) return false;
+            if (min != null ? !min.equals(that.min) : that.min != null) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = min != null ? min.hashCode() : 0;
+            result = 31 * result + (max != null ? max.hashCode() : 0);
+            return result;
+        }
+
+        @Override
+        public String toString() {
+            return "AgeRangeJSONImpl{" +
+                    "min=" + min +
+                    ", max=" + max +
+                    '}';
+        }
+    }
+
+>>>>>>> upstream/master
 }

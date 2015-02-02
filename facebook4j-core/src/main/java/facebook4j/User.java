@@ -91,12 +91,21 @@ public interface User {
 
     }
 
+<<<<<<< HEAD
     interface AgeRange {
    	 // one value could be null (13-17 / 18-20 / 21 - null)
    	 Long getMin();
    	 Long getMax();
    	 		
     }
+=======
+ 	interface AgeRange {
+ 		// one value could be null (13-17 / 18-20 / 21 - null)
+        Integer getMin();
+        Integer getMax();
+	}
+
+>>>>>>> upstream/master
 
     String BIRTHDAY_DATE_FORMAT = "MM/dd/yyyy";
 
